@@ -1,1 +1,4 @@
 /nx809jPkg/FdtBlob/*.dtb
+/out/
+/Mu-Silicium/
+/mu-venv/

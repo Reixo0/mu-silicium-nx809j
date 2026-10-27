@@ -1,7 +1,7 @@
 #!/bin/sh
 # Builds out/esp-dispatch/BOOTAA64.EFI (clang + lld-link, no SDK).
 set -eu
-top=$(cd "$(dirname "$0")/../.." && pwd)
+top=$(cd "$(dirname "$0")/.." && pwd)
 o=$top/out/esp-dispatch
 mkdir -p "$o"
 clang -target aarch64-unknown-windows -ffreestanding -fno-stack-protector \

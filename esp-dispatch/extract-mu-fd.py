@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Extract the raw 3 MiB Mu-Silicium FD from a boot image built by
-uefi/build.sh, for the ESP dispatcher (\\nx809j\\mu\\MU.fd).
+build.sh, for the ESP dispatcher (\\nx809j\\mu\\MU.fd).
 
 The boot image's kernel is a gzip of BootShim + FD (+ appended DTB). The
 shim's first instruction is "adr x1, _Payload", which gives the FD offset.

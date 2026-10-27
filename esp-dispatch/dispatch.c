@@ -19,7 +19,7 @@
  */
 #include "../include/efi-mini.h"
 
-#define MU_FD_BASE  0xC6900000ULL  /* FD_BASE in uefi/nx809j.toml */
+#define MU_FD_BASE  0xC6900000ULL  /* FD_BASE in nx809j.toml */
 #define MU_FD_SIZE  0x300000ULL
 
 /* QcomPkg EFIDisplayPwr.h */

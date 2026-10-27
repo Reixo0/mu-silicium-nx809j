@@ -1,25 +1,25 @@
 #!/bin/sh
 # Builds the NX809J vendor binaries for Mu-Silicium (Binaries/nx809j) from
 # the phone's own uefi partition: extracts the drivers, applies
-# uefi/patch-dxe.py and puts each driver next to its .inf (matched by GUID).
+# patch-dxe.py and puts each driver next to its .inf (matched by GUID).
 #
-# Usage: uefi/make-binaries.sh [uefi.img] [Mu-Silicium dir]
+# Usage: make-binaries.sh [uefi.img] [Mu-Silicium dir]
 # The drivers are Qualcomm/Nubia binaries from the phone: they stay out of
-# git, only the .inf files are in uefi/Binaries/nx809j.
+# git, only the .inf files are in Binaries/nx809j.
 set -eu
-top=$(cd "$(dirname "$0")/.." && pwd)
-img=${1:-$top/dump/partitions/uefi_a.img}
-mu=${2:-$top/tools/dl/Mu-Silicium}
+top=$(cd "$(dirname "$0")" && pwd)
+img=${1:?usage: $0 uefi_a.img [Mu-Silicium]}
+mu=${2:-$top/Mu-Silicium}
 out=$mu/Binaries/nx809j
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
-python3 -I "$top/uefi/fv-extract.py" "$img" "$work/fv" > "$work/list.txt"
-python3 -I "$top/uefi/patch-dxe.py" "$work/fv"
+python3 -I "$top/fv-extract.py" "$img" "$work/fv" > "$work/list.txt"
+python3 -I "$top/patch-dxe.py" "$work/fv"
 
 rm -rf "$out"
 mkdir -p "$out"
-cp -r "$top/uefi/Binaries/nx809j/." "$out/"
+cp -r "$top/Binaries/nx809j/." "$out/"
 
 # GUID -> extracted directory
 find "$work/fv" -name '*.guid' | while read -r g; do

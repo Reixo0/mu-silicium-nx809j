@@ -56,7 +56,7 @@ class SettingsManager (UpdateSettingsManager, SetupSettingsManager, PrEvalSettin
         return CommonPlatform.TargetsSupported
 
     def GetRequiredSubmodules (self):
-        # No "Binaries": uefi/make-binaries.sh builds Binaries/nx809j from
+        # No "Binaries": make-binaries.sh builds Binaries/nx809j from
         # the phone's own uefi partition.
         return [
             RequiredSubmodule ("Common/Mu", True),

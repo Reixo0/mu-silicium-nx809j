@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
  * Exposes what ABL left in memory for Mu (device tree and initrd, see
- * uefi/probe/AblProbe.c) as debugfs files. Mu keeps that memory reserved,
+ * probe/AblProbe.c) as debugfs files. Mu keeps that memory reserved,
  * and the kernel won't let /dev/mem read it.
  *
  *   insmod abldump.ko dtb=0x... initrd_start=0x... initrd_end=0x...
